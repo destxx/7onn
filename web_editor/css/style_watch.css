@@ -1,0 +1,160 @@
+ :root {
+   --h100: 100%;
+   --h50: 50%;
+ }
+
+ html {
+   font-size: 10px;
+ }
+
+ .watch {
+   width: 25rem;
+   height: 25rem;
+   margin-left: 76px;
+   margin-top: 183px;
+   position: absolute;
+ }
+
+  /* ====== zewnętrzna strefa zegarka ====== */
+
+
+ .outside_watch {
+   position: relative;
+   width: var(--h100);
+   height: var(--h100);
+   border-radius: var(--h100);
+   background-color: black;
+ }
+
+ .outside_watch::after {
+   transform: rotate(90deg)
+ }
+
+ .outside_watch::after, .outside_watch::before, .outside_watch .index {
+   content: '';
+   position: absolute;
+   width: 5px;
+   height: var(--h100);
+   background-color: gold;
+   left: 49%;
+
+ }
+
+ .outside_watch .index {
+   background-color: goldenrod;
+   width: 5px;
+ }
+
+ .outside_watch .index.index_one {
+   transform: rotate(30deg);
+ }
+
+ .outside_watch .index.index_two {
+   transform: rotate(60deg)
+ }
+
+ .outside_watch .index.index_three {
+   transform: rotate(120deg)
+ }
+
+ .outside_watch .index.index_four {
+   transform: rotate(150deg)
+ }
+
+ /* ====== wewnętrzna strefa zegarka ====== */
+
+ .inside_watch {
+   position: absolute;
+   top: 10%;
+   left: 10%;
+   width: 80%;
+   height: 80%;
+   background-color: black;
+   border-radius: var(--h100);
+   z-index: 1;
+ }
+
+ .inside_watch::before {
+   content: '';
+   position: absolute;
+   top: var(--h50);
+   left: var(--h50);
+   width: 16px;
+   height: 16px;
+   transform: rotate(45deg);
+   border-radius: 4px;
+   margin-left: -9px;
+   margin-top: -6px;
+   background-color: goldenrod;
+   z-index: 2;
+
+ }
+
+ /* ====== wskazówki ====== */
+
+ .hand {
+   width: var(--h50);
+   right: var(--h50);
+   height: 6px;
+   background-color: gold;
+   position: absolute;
+   top: var(--h50);
+   border-radius: 0px;
+   transform-origin: 100%;
+   transform: rotate(90deg);
+
+ }
+
+ .hand.hour_hand {
+   width: 30%;
+
+ }
+
+ .hand.min_hand {
+   height: 6px;
+   width: 40%;
+ }
+
+ .hand.sec_hand {
+   background-color: goldenrod;
+   width: 45%;
+   height: 4px;
+ }
+
+ .logo_watch img {
+   width: auto;
+   height: auto;
+   position: relative;
+   margin-top: 30px;
+
+ }
+
+ @media (max-width: 1040px) {
+   .watch {
+     width: 18.5rem;
+     height: 18.5rem;
+     margin-left: 58px;
+     margin-top: 140px;
+   }
+
+
+   .logo_watch img {
+     display: none;
+   }
+
+   .outside_watch::after, .outside_watch::before, .outside_watch .index {
+     width: 3px;
+   }
+
+   .hand.min_hand {
+     height: 4px;
+   }
+
+   .hand.sec_hand {
+     height: 3px;
+   }
+
+   .hand.hour_hand {
+     height: 4px;
+   }
+ }
