@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-my {
+  max-width: 1920px;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+}
+
+.text_box{
+  text-align: justify;
+}
+hr{
+  margin:0;
+}
+.not-allowed{
+    cursor: not-allowed;
+}
+.text_box{
+  font-size:14px;
+}
+
+span, .link_log{
+  color:goldenrod;
+}
+
+.link_log:hover{
+  color:black;
+}
+h4{
+  margin-bottom:0;
+}
+.name_box{
+font-weight: 600;
+}
+.name{
+  height: 65px;
+}
+.team h2{
+  text-align: center;
+}
+
+.row_log{
+  padding-left: 0;
+  padding-right: 0;
+}
+.text-uppercase{
+  font-size:12px;
+}
+
+.vert{
+  vertical-align: middle;
+}
+.btn_yellow{
+  background-color: white !important; 
+  color:black !important; 
+  font-weight: 600;
+}
+.btn_yellow:hover{
+  background-color: goldenrod !important; 
+}
+
+#id_search {
+  width: 150px;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+}
+
+.navbar-brand:hover {
+  color: goldenrod;
+}
+
+.nav-link {
+  margin-right: 5px;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+#nav_s1:hover, #nav_s2:hover, #nav_s3:hover, #nav_s4:hover, #nav_s5:hover, #nav_s6:hover, #nav_s7:hover, .btn2:hover{
+  color: gold;
+}
+
+
+.btn-dark {
+  border: 2px solid rgba(255, 255, 255, .55);
+  /*background-color: rgba(255, 255, 255, 0.089);*/
+  padding: 5px 15px;
+  border-radius: 8px;
+ 
+}
+.btn-dark:hover{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#nav_s6, #nav_s7 {
+  color: rgba(255, 255, 255, .55);
+}
+
+
+.menu {
+  font-size: 14px;
+}
+
+/*
+.foot_first{
+  padding-left: 12%;
+}
+*/
+i {
+  padding-right: 5px;
+}
+
+.logo {
+  padding-right: 10px;
+}
+
+.main {
+  background-image: url(./photos/bg1.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 20rem;
+  width: 100%;
+}
+
+.main h1 {
+  color: white;
+  text-shadow: 1px 1px 15px black;
+}
+
+.card .btn {
+  background-color: goldenrod;
+}
+
+.new .row {
+  background-color: goldenrod;
+
+}
+
+.card a {
+  color: black;
+  text-decoration: none;
+}
+
+.btn1 {
+  color: white;
+  background-color: goldenrod;
+  border-color: goldenrod;
+}
+
+.btn2 {
+  color: white;
+  border-color: goldenrod;
+}
+
+.btn-cart {
+  color: goldenrod;
+}
+
+.log a {
+  color: goldenrod;
+  text-decoration: none;
+}
+
+/*contact*/
+
+h2 {
+  font-weight: 600;
+}
+
+.faq {
+  font-size: 14px;
+}
+
+dl.faq {
+  margin-top: 40px;
+  text-align: center;
+}
+
+dl.faq button {
+  margin: 0;
+  margin-top: 16px;
+  padding: 4px 8px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+dl dd {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #413f3f;
+}
+
+dl.faq .desc {
+  margin: 0;
+  margin-top: 0.25em;
+  padding: 0.25em;
+  display: none;
+  background-color: rgb(241, 237, 232);
+}
+
+dl.faq button:hover,
+dl.faq button:focus {
+  padding: 2px 6px;
+  background-color: gold;
+  border: 2px solid #413f3f;
+  cursor: pointer;
+}
+
+dl.faq button[aria-expanded="false"]::before {
+  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' style='forced-color-adjust: auto;'%3E%3Cpolygon points='1 1, 1 11, 8 6' fill='currentColor' stroke= 'currentColor' /%3E%3C/svg%3E%0A");
+  position: relative;
+  left: -2px;
+}
+
+dl.faq button[aria-expanded="true"]::before {
+  content: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' style='forced-color-adjust: auto;'%3E%3Cpolygon points='1 1, 11 1, 6 8' fill='currentColor' stroke= 'currentColor' /%3E%3C/svg%3E ");
+  position: relative;
+  left: -4px;
+  top: 2px;
+}
+
+.ll {
+  margin-top: -65px;
+}
+
+@media (max-width: 1400px) and (min-width: 1200px) {
+  .nav-link {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  i {
+    padding-right: 3px;
+  }
+
+  .btn-dark {
+    border: 0px;
+    padding: 0px 0px;
+  }
+
+  #id_search {
+    width: 100px;
+  }
+}
