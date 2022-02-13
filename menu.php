@@ -20,6 +20,8 @@ error_reporting(0);
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style_main.css">
+
+	
 	
 	<title>7onn</title>
 </head>

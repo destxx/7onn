@@ -1,3 +1,6 @@
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <?php require_once "menu.php" ?>
 <?php
 
@@ -40,38 +43,39 @@ if (isset($_POST['submit1'])) {
 
 ?>
 
-<section id="profile">
+<section>
 
     <div class="container">
         <div class="row p-3">
-            <div class="col-xl-3 col-lg-12">
+            <div class="col-lg-3">
                 <div class="row text-center justify-content-center">
-                    <div class="col-lg-5 col-md-4 m-2 border shadow bg-dark rounded d-flex justify-content-center align-items-center one square">
-                        <a href="./profile.php"><i class="bi bi-person-fill fa-4x"></i>
-                            <h6>Profil</h6>
-                        </a>
-                    </div>
-                    <div class="col-lg-5 col-md-4 m-2 border shadow rounded d-flex justify-content-center align-items-center one square">
-                        <a href="#" id="orders"><i class="bi bi-truck fa-4x"></i>
-                            <h6>Zamówienia</h6>
-                        </a>
-                    </div>
-                    <div class="col-lg-5 col-md-4 m-2 border shadow rounded d-flex justify-content-center align-items-center one square">
-                        <a href="#"><i class=" bi bi-person-fill fa-4x"></i>
-                            <h6>Button3</h6>
-                        </a>
-                    </div>
-                    <div class="col-lg-5 col-md-4 m-2 border shadow bg-dark rounded d-flex justify-content-center align-items-center one square">
+                    <div class="col-5 m-2 border bg-dark rounded d-flex justify-content-center align-items-center one square">
                         <a href="#"><i class="bi bi-person-fill fa-4x"></i>
-                            <h6>Button4</h6>
+                            <h5>Hello</h5>
+                        </a>
+                    </div>
+                    <div class="col-5 m-2 border rounded d-flex justify-content-center align-items-center one square">
+                        <a href="#"><i class="bi bi-person-fill fa-4x"></i>
+                            <h5>Hello</h5>
+                        </a>
+                    </div>
+                    <div class="col-5 m-2 border rounded d-flex justify-content-center align-items-center one square">
+                        <a href="#"><i class=" bi bi-person-fill fa-4x"></i>
+                            <h5>Hello</h5>
+                        </a>
+                    </div>
+                    <div class="col-5 m-2 border bg-dark rounded d-flex justify-content-center align-items-center one square">
+                        <a href="#"><i class="bi bi-person-fill fa-4x"></i>
+                            <h5>Hello</h5>
                         </a>
                     </div>
                 </div>
+
             </div>
 
 
-            <div class="col-xl-8 col-lg-12 p-3 my-2 border shadow rounded">
-                <div class="row align-items-end">
+            <div class="col-lg-8 p-3 my-2 border rounded">
+                <div class="row">
                     <div class="col-md-3 text-center">
                         <div class="avatar">
                             <img src="https://images.vexels.com/media/users/3/129616/isolated/preview/fb517f8913bd99cd48ef00facb4a67c0-businessman-avatar-silhouette-by-vexels.png" style="width: 70%; height: 100%;" alt="" />
@@ -112,77 +116,49 @@ if (isset($_POST['submit1'])) {
                     </div>
                 </div>
             </div>
+            <div class="col-5 py-2 me-3 mb-3 rounded border">
+                <div class="row">
+                    <div class="order">
+                        <span class="fs-4">Ostatnie zamówienia</span>
+                        <hr>
+                        <table>
+                            <th width="40%"></th>
+                            <th width="60%"></th>
+                            <tr>
+                                <td>Zamówienie 1 </td>
+                                <td><span class="badge bg-success">Przyjęte</span></td>
+                            </tr>
+                            <tr>
+                                <td>Zamówienie 2 </td>
+                                <td><span class="badge bg-primary">Wysłane</span></td>
+                            </tr>
+                            <tr>
+                                <td>Zamówienie 3 </td>
+                                <td><span class="badge bg-danger">Anulowane</span></td>
+                            </tr>
+                            <tr>
+                                <td>Zamówienie 4 </td>
+                                <td><span class="badge bg-primary">Wysłane</span></td>
+                            </tr>
+                            <tr>
+                                <td>Zamówienie 5 </td>
+                                <td><span class="badge bg-primary">Wysłane</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 </section>
-<section id="order" style="display:none">
-            <div class="back mt-2 ms-2">
-                <button onclick="window.location.href='/profile.php'" class="btn btn1 fw-bold m-1 text-uppercase">Wróć do profilu</button>
-            </div>
-            <div class="container-fluid grey-bg py-3 text-center">
-                <h3><b>Twoje zamówienia</b></h3>
-                <span>W razie jakichkolwiek pytań prosimy o kontakt.</span>
-            </div>
-                <?php
-                if ($conn->connect_errno != 0) {
-                    echo "Error: " . $conn->connect_errno . "Opis: " . $conn->connect_errno;
-                } else {
-                    $zapytanie = "SELECT order_details.order_id, order_details.created_at, payment.status  FROM order_details JOIN payment ON payment.order_id = order_details.order_id  WHERE order_details.user_id =  '$userid'";
-                    $result = mysqli_query($conn, $zapytanie);
-                    while ($order = mysqli_fetch_assoc($result)) { ?>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="card shadow-md text-center p-2 m-2">
-                                        <div class="card-header  bg-dark text-light">Zamówienie nr <?php echo $order['order_id'] ?></div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <?php $zapytanie2 = "SELECT items_order.product_id, items_order.quantity, products.name, products.price, products.image FROM items_order JOIN products ON items_order.product_id = products.id WHERE order_id = '" . $order['order_id'] . "'";
-                                                $result2 = mysqli_query($conn, $zapytanie2);
-                                                while ($order2 = mysqli_fetch_assoc($result2)) { ?>
-                                                    <div class="row pb-2">
-                                                        <div class="col-3">
-                                                            <img class="image-fluid hidden" alt="product image" src="./photos_watches/<?php echo $order2['image']; ?>" style="height:80px; width:80px">
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <b><?php echo $order2['name'] ?></b>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-6">
-
-                                                                        Ilość: <?php echo $order2['quantity'] ?>
-                                                                    </div>
-                                                                    <div class="col-6">
-                                                                        <h7>Cena: <?php echo $order2['price'] ?>zł</h7>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php
-                                                } ?>
-                                            </div>
-                                            <h5 class="card-title">Status płatności: <?php echo $order['status'] ?></h5>
-                                        </div>
-                                        <div class="card-footer text-muted">Data zamówienia <?php echo $order['created_at'] ?></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                <?php
-                    }
-                } ?>
-            </section>
 
 <section>
     <div class="modal fade" id="address" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Zmiana danych</h5>
+                    <h5 class="modal-title">New message</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -247,21 +223,61 @@ if (isset($_POST['submit1'])) {
     </div>
 </section>
 
+<section>
+    <?php
+    if ($conn->connect_errno != 0) {
+        echo "Error: " . $conn->connect_errno . "Opis: " . $conn->connect_errno;
+    } else {
+        $zapytanie = "SELECT order_details.order_id, order_details.created_at, payment.status  FROM order_details JOIN payment ON payment.order_id = order_details.order_id  WHERE order_details.user_id =  '$userid'";
+        $result = mysqli_query($conn, $zapytanie);
+        while ($order = mysqli_fetch_assoc($result)) { ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card text-center">
+                            <div class="card-header">Zamówienie nr <?php echo $order['order_id'] ?></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <?php $zapytanie2 = "SELECT items_order.product_id, items_order.quantity, products.name, products.price, products.image FROM items_order JOIN products ON items_order.product_id = products.id WHERE order_id = '" . $order['order_id'] . "'";
+                                    $result2 = mysqli_query($conn, $zapytanie2);
+                                    while ($order2 = mysqli_fetch_assoc($result2)) { ?>
+                                        <div class="row pb-2">
+                                            <div class="col-3">
+                                                <img class="image-fluid hidden" alt="product image" src="./photos_watches/<?php echo $order2['image']; ?>" style="height:80px; width:80px">
+                                            </div>
+                                            <div class="col-9">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <b><?php echo $order2['name'] ?></b>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+
+                                                            Ilość: <?php echo $order2['quantity'] ?>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <h7>Cena: <?php echo $order2['price'] ?>zł</h7>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    } ?>
+                                </div>
+                                <h5 class="card-title">Status płatności: <?php echo $order['status'] ?></h5>
+                            </div>
+                            <div class="card-footer text-muted">Data zamówienia <?php echo $order['created_at'] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <?php
+        }
+    } ?>
+</section>
+
 
 <script src="js.js"></script>
-<script>
-    var a = document.getElementById('orders');
-    a.onclick = function() {
-        var div = document.getElementById('profile');
-        var div2 = document.getElementById('order');
-        if (div.style.display !== 'none') {
-            div.style.display = 'none'
-            div2.style.display = 'block';
-        }else {
-            div.style.display = 'block';
-            div2.style.display = 'none';
-        }
-};
-</script>
 
 <?php require_once "foot.php" ?>

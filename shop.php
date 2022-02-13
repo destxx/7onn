@@ -18,13 +18,7 @@ $offset = ($page_no-1) * $total_records_per_page;
 $previouse_page = $page_no - 1;
 $next_page = $page_no + 1;
 $adjacents = "2";
-
-if( $_GET["szukaj"]) {
-	$_GET['szukaj'] = mysqli_real_escape_string($conn, $_GET['szukaj']);
-	$zapytanie_ile = "SELECT COUNT(*) AS total_records FROM products WHERE name LIKE '%" . $_GET['szukaj'] . "%'";
-} else{
-	$zapytanie_ile = "SELECT COUNT(*) AS total_records FROM products";    
-}           
+          
 
 $result_count = mysqli_query($conn, $zapytanie_ile);
 $total_records = mysqli_fetch_array($result_count);
@@ -58,7 +52,8 @@ $second_last = $total_no_of_pages - 1;
                 'name' => $_POST['name'],
                 'price' => $_POST['price'],
                 'quantity' => $_POST['quantity'],
-				'description' => $_POST['description']
+				'description' => $_POST['description'],
+                'image' => $_POST['image']
             );
             }
             else
@@ -75,7 +70,8 @@ $second_last = $total_no_of_pages - 1;
                 'name' => $_POST['name'],
                 'price' => $_POST['price'],
                 'quantity' => $_POST['quantity'],
-				'description' => $_POST['description']
+				'description' => $_POST['description'],
+                'image' => $_POST['image']
             );
         }
     }
@@ -103,7 +99,7 @@ $second_last = $total_no_of_pages - 1;
                             $zapytanie3 = "SELECT * FROM products LIMIT $offset, $total_records_per_page";    
                         }           
                         $result = mysqli_query($conn, $zapytanie3);
-                        while ($product = mysqli_fetch_assoc($result)) { $x++?>
+                        while ($product = mysqli_fetch_assoc($result)) {?>
                             <div class="col-xl-3 col-lg-6" >
                                 <form method="post" action="shop.php?action=add&id=<?php echo $product['id']; ?>">
                                     <div class="card shadow-sm border position-relative mb-5 px-3 py-3">
@@ -113,6 +109,7 @@ $second_last = $total_no_of_pages - 1;
                                             <h5 class="name"><a  href="shop.php?page=product&id=<?=$product['id']?>"><?php echo $product['name']; ?></a></h5>
                                             <h3 class="price fw-bold"><?php echo $product['price']. "zł"; ?></h3>
                                             <input type="text" name="quantity" class="form-control" value="1" />
+                                            <input type="hidden" name="image" value="<?php echo $product["image"]; ?>" />
                                             <input id="22" type="hidden" name="name" value="<?php echo $product["name"]; ?>" />
                                             <input type="hidden" name="price" value="<?php echo $product['price']; ?>" />
                                             <input type="submit" name="dodaj_do_koszyka" class="btn fw-bold p-3 text-white text-uppercase my-2" value="Dodaj do koszyka" />
@@ -194,4 +191,4 @@ $second_last = $total_no_of_pages - 1;
 			</div>
 			<hr>
 	</section>
-	<?php include "foot.php" ?>
+	<?php require_once "foot.php" ?>

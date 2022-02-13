@@ -254,3 +254,8 @@ dl.faq button[aria-expanded="true"]::before {
     width: 100px;
   }
 }
+
+.square a{
+  text-decoration: none;
+  color:goldenrod;
+}

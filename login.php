@@ -1,7 +1,7 @@
 <?php include 'menu.php' ?>
 <?php
 
-require_once 'config.php';
+include 'config.php';
 
 session_start();
 
@@ -15,6 +15,9 @@ if (isset($_SESSION['username'])) {
 if (isset($_POST['submit'])) {
   $email = $_POST['email'];
   $password = md5($_POST['password']);
+
+  //Oczyszczanie wprowadzonych danych
+
 
   $sql = "SELECT * FROM users INNER JOIN users_address ON users.id = users_address.user_id WHERE email='$email' AND password='$password'";
   $result = mysqli_query($conn, $sql);
@@ -68,4 +71,4 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 </section>
-<?php include "foot.php" ?>
+<?php require_once "foot.php" ?>
