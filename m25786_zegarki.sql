@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql.ct8.pl
--- Czas generowania: 09 Lut 2022, 22:50
+-- Czas generowania: 13 Lut 2022, 18:01
 -- Wersja serwera: 8.0.26
 -- Wersja PHP: 7.1.33
 
@@ -60,6 +60,25 @@ CREATE TABLE `items_order` (
   `quantity` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Zrzut danych tabeli `items_order`
+--
+
+INSERT INTO `items_order` (`id`, `order_id`, `product_id`, `quantity`) VALUES
+(1, 10, 778, 0),
+(2, 10, 21, 1),
+(3, 11, 21, 1),
+(4, 12, 21, 1),
+(5, 12, 23, 1),
+(6, 12, 22, 15),
+(7, 13, 21, 1),
+(8, 13, 23, 1),
+(9, 13, 22, 15),
+(10, 14, 21, 1),
+(11, 14, 23, 1),
+(12, 14, 22, 15),
+(13, 15, 20, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -71,7 +90,7 @@ CREATE TABLE `order_details` (
   `user_id` int DEFAULT NULL,
   `payment_id` int DEFAULT NULL,
   `total` float NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -79,7 +98,12 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`order_id`, `user_id`, `payment_id`, `total`, `created_at`) VALUES
-(1, 4, 1, 452.17, NULL);
+(1, 4, 1, 452.17, NULL),
+(11, 55, 9, 778, '2022-02-12 00:52:45'),
+(12, 55, 10, 15606, '2022-02-12 00:56:35'),
+(13, 55, 11, 15606, '2022-02-12 23:47:40'),
+(14, 55, 12, 15606, '2022-02-12 23:49:16'),
+(15, 55, 13, 798, '2022-02-13 16:07:24');
 
 -- --------------------------------------------------------
 
@@ -93,6 +117,25 @@ CREATE TABLE `payment` (
   `total` float NOT NULL DEFAULT '0',
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Zrzut danych tabeli `payment`
+--
+
+INSERT INTO `payment` (`id`, `order_id`, `total`, `status`) VALUES
+(1, 3, 778, 'OKEJ'),
+(2, 0, 778, 'OKEJ'),
+(3, 5, 778, 'NEW'),
+(4, 6, 778, 'NEW'),
+(5, 7, 778, 'NEW'),
+(6, 8, 778, 'NEW'),
+(7, 9, 778, 'NEW'),
+(8, 10, 778, 'NEW'),
+(9, 11, 778, 'NEW'),
+(10, 12, 15606, 'NEW'),
+(11, 13, 15606, 'NEW'),
+(12, 14, 15606, 'NEW'),
+(13, 15, 798, 'NEW');
 
 -- --------------------------------------------------------
 
@@ -214,7 +257,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `telephone`, `date_added`) VALUES
 (52, 'WSB', '402fd6af80d80e346b96c89d37aae805', 'user@wsb.pl', 'Adam', 'Kowalski', NULL, '2022-02-09 16:51:21'),
 (53, 'User22', '0494170d63b88423f502dee49523bb83', 'user222@gmail.com', NULL, NULL, NULL, '2022-02-09 20:16:17'),
-(54, 'user3213', 'aac6e3ceacb090973f98433551c8af01', 'user3213@gmail.com', NULL, NULL, NULL, '2022-02-09 20:19:02');
+(54, 'user3213', 'aac6e3ceacb090973f98433551c8af01', 'user3213@gmail.com', NULL, NULL, NULL, '2022-02-09 20:19:02'),
+(55, 'admin', 'e64b78fc3bc91bcbc7dc232ba8ec59e0', 'admin@gmail.com', 'Jan', 'Kowalski', NULL, '2022-02-11 15:35:36'),
+(56, 'User11', 'a2ee2ba9989832775ad8db4c57b4ea01', 'user11@gmail.com', NULL, NULL, NULL, '2022-02-13 16:52:06');
 
 -- --------------------------------------------------------
 
@@ -237,10 +282,11 @@ CREATE TABLE `users_address` (
 --
 
 INSERT INTO `users_address` (`address_id`, `user_id`, `address1`, `address2`, `city`, `postal_code`, `country`) VALUES
-(23, 51, 'Polna 14', '', 'Daniszyn', '63-300', 'Polska'),
 (24, 52, 'Polna 4', '', 'Poznań', '60-778', 'Polska'),
 (25, 53, NULL, NULL, NULL, NULL, NULL),
-(26, 54, NULL, NULL, NULL, NULL, NULL);
+(26, 54, NULL, NULL, NULL, NULL, NULL),
+(27, 55, 'Staszica 17b', '', 'Poznań', '61-210', 'Polska'),
+(28, 56, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -319,19 +365,19 @@ ALTER TABLE `generated_watches`
 -- AUTO_INCREMENT dla tabeli `items_order`
 --
 ALTER TABLE `items_order`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT dla tabeli `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT dla tabeli `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT dla tabeli `products`
@@ -355,13 +401,13 @@ ALTER TABLE `products_strap`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT dla tabeli `users_address`
 --
 ALTER TABLE `users_address`
-  MODIFY `address_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `address_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
