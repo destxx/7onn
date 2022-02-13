@@ -14,3 +14,15 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   modalTitle.textContent = 'New message to ' + recipient
   modalBodyInput.value = recipient
 })
+
+var button = document.getElementById('orderSummary');
+
+button.onclick = function() {
+    var div = document.getElementById('cart');
+    if (div.style.display !== 'none') {
+        div.style.display = 'none';
+    }
+    else {
+        div.style.display = 'block';
+    }
+};
