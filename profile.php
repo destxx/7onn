@@ -57,8 +57,8 @@ if (isset($_POST['submit1'])) {
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-4 m-2 border shadow rounded d-flex justify-content-center align-items-center one square">
-                        <a href="#"><i class=" bi bi-person-fill fa-4x"></i>
-                            <h6>Button3</h6>
+                        <a href="./edycja.php"><i class="bi bi-file-text fa-4x"></i>
+                            <h6>ADMIN ONLY</h6>
                         </a>
                     </div>
                     <div class="col-lg-5 col-md-4 m-2 border shadow bg-dark rounded d-flex justify-content-center align-items-center one square">

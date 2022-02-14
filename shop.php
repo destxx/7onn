@@ -18,7 +18,13 @@ $offset = ($page_no-1) * $total_records_per_page;
 $previouse_page = $page_no - 1;
 $next_page = $page_no + 1;
 $adjacents = "2";
-          
+        
+if( $_GET["szukaj"]) {
+	$_GET['szukaj'] = mysqli_real_escape_string($conn, $_GET['szukaj']);
+	$zapytanie_ile = "SELECT COUNT(*) AS total_records FROM products WHERE name LIKE '%" . $_GET['szukaj'] . "%'";
+} else{
+	$zapytanie_ile = "SELECT COUNT(*) AS total_records FROM products";    
+}       
 
 $result_count = mysqli_query($conn, $zapytanie_ile);
 $total_records = mysqli_fetch_array($result_count);
@@ -81,12 +87,7 @@ $second_last = $total_no_of_pages - 1;
 <div class="pt-3"></div>
 	<div class="container py-4">
 		<div class="row">
-            <div class="col-3">
-                <h5 class="card-title p-2">Filtry</h5>
-                <hr>
-                <p class="card-text p-2">Filtruj listę zegarków.</p>
-            </div>
-            <div class="col-9">
+            <div class="col">
 				<p class="count-product p-2">Znaleziono <?php echo $total_records; ?> pozycje</p>
                 <div class="row"><?php
                     if ($conn->connect_errno != 0) {
